@@ -5,7 +5,7 @@ namespace App\Providers;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\Schema;
 /**
  * Class AppServiceProvider.
  */
@@ -41,6 +41,7 @@ class AppServiceProvider extends ServiceProvider
 
         // setLocale for php. Enables ->formatLocalized() with localized values for dates
         setlocale(LC_TIME, config('app.locale_php'));
+        Schema::defaultStringLength(191);
 
         // setLocale to use Carbon source locales. Enables diffForHumans() localized
         Carbon::setLocale(config('app.locale'));
